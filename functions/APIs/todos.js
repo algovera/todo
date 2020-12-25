@@ -3,8 +3,11 @@
 const { db } = require('../util/admin');
 
 exports.getAllTodos = (request, response) => {
+
+    console.log("\n\n>>>>getAllTodos@todos.js >>>>\nrequest.user: ", request.user);
 	db
 		.collection('todos')
+        .where('username','==',request.user.username)
 		.orderBy('createdAt', 'desc')
 		.get()
 		.then((data) => {
@@ -33,19 +36,19 @@ exports.postOneTodo = (request, response) => {
 		return response.status(400).json({ body: 'Must not be empty' });
     }
 
-//    response.send({body: request.body.body});
-//    return ;
-//    return response.send({hi: "hi"})    
-
     if(!request.body.body || request.body.title.trim() === '') {
         return response.status(400).json({ title: 'Must not be empty' });
     }
-    
+
+//    console.log("\n\n>>>>auth.js >>>>\nrequest.user: ", request.user);
     const newTodoItem = {
         title: request.body.title,
         body: request.body.body,
+        username: request.user.username,
         createdAt: new Date().toISOString()
     }
+
+
     db
         .collection('todos')
         .add(newTodoItem)
@@ -67,15 +70,28 @@ exports.postOneTodo = (request, response) => {
 
 exports.deleteTodo = (request, response) => {
     const document = db.doc(`/todos/${request.params.todoId}`);
+
+    
+
+
     document
         .get()
         .then((doc) => {
             if (!doc.exists) {
                 return response.status(404).json({ error: 'Todo not found' })
             }
+            console.log("\n\n>>>>deleteTodo@todo.js >>>>\ndoc.data().username: ", doc.data().username);
+            console.log("\n\n>>>>deleteTodo@todo.js >>>>\nrequest.user.username: ", request.user.username);
+  
+            if(doc.data().username !== request.user.username){
+                return response.status(403).json({error:"UnAuthorized"})
+            }
+
+
             return document.delete();
         })
         .then(() => {
+    
             response.json({ message: 'Delete successfull' });
         })
         .catch((err) => {

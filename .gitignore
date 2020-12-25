@@ -65,3 +65,14 @@ node_modules/
 # dotenv environment variables file
 .env
 .DS_Store
+data-path/firebase-export-metadata.json
+data-path/auth_export/accounts.json
+data-path/auth_export/config.json
+data-path/firestore_export/firestore_export.overall_export_metadata
+data-path/firestore_export/all_namespaces/all_kinds/all_namespaces_all_kinds.export_metadata
+data-path/firestore_export/all_namespaces/all_kinds/output-0
+data-path/.firebase-export-metadata.json.icloud
+data-path/auth_export/.config.json.icloud
+data-path/firestore_export/.firestore_export.overall_export_metadata.icloud
+data-path/firestore_export/all_namespaces/all_kinds/.all_namespaces_all_kinds.export_metadata.icloud
+data-path/firestore_export/all_namespaces/all_kinds/.output-0.icloud
