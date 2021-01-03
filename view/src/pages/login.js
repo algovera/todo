@@ -16,7 +16,11 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 import axios from 'axios';
 
+<<<<<<< HEAD
 
+=======
+// login.js
+>>>>>>> d6f48fc382d570104805611ac2f8587ad847fbd9
 
 const styles = (theme) => ({
 	paper: {
@@ -81,12 +85,19 @@ class login extends Component {
 			email: this.state.email,
 			password: this.state.password
 		};
+<<<<<<< HEAD
 
 		console.log(userData);
 		axios
 			.post('/login', userData)
 			.then((response) => {
 				console.log("response", response);
+=======
+		
+		axios
+			.post('/login', userData)
+			.then((response) => {
+>>>>>>> d6f48fc382d570104805611ac2f8587ad847fbd9
 				localStorage.setItem('AuthToken', `Bearer ${response.data.token}`);
 				this.setState({ 
 					loading: false,
@@ -94,7 +105,11 @@ class login extends Component {
 				this.props.history.push('/');
 			})
 			.catch((error) => {			
+<<<<<<< HEAD
 				console.log("got failed here", error.response.data);	
+=======
+                
+>>>>>>> d6f48fc382d570104805611ac2f8587ad847fbd9
 				this.setState({
 					errors: error.response.data,
 					loading: false
