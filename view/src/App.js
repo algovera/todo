@@ -3,11 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import login from './pages/login';
-<<<<<<< HEAD
-=======
 import signup from './pages/signup';
 import home from './pages/home';
->>>>>>> d6f48fc382d570104805611ac2f8587ad847fbd9
 
 const theme = createMuiTheme({
 	palette: {
@@ -20,22 +17,6 @@ const theme = createMuiTheme({
   }
 });
 
-<<<<<<< HEAD
-function App() {
-	return (
-		<MuiThemeProvider theme={theme}>
-			<Router>
-				<div>
-					<Switch>
-						<Route exact path="/login" component={login} />
-					</Switch>
-				</div>
-			</Router>
-		</MuiThemeProvider>
-	);
-}
-
-=======
 
 
 function App() {
@@ -55,5 +36,4 @@ function App() {
   );
 
 }
->>>>>>> d6f48fc382d570104805611ac2f8587ad847fbd9
 export default App;
